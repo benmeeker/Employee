@@ -6,6 +6,7 @@ type info struct {
 	POU   string
 	SOU   string
 	TCID  int
+	DATE  string
 }
 
 var ui = info{
@@ -14,4 +15,5 @@ var ui = info{
 	pou(),
 	sou(),
 	0,
+	date(),
 }

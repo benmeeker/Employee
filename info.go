@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"time"
 )
 
 func fn() string {
@@ -68,7 +69,6 @@ func tcid() int {
 		cnt, _ := strconv.Atoi(string(byteNumber))
 		cnt++
 		ui.TCID = cnt
-		log.Println(ui.TCID)
 		a = ui.TCID
 		file := []byte(strconv.Itoa(ui.TCID))
 		if err = ioutil.WriteFile(`N:\IT\users\BenjaminMe\employeeidcounter.txt`, file, 0666); err != nil {
@@ -80,6 +80,13 @@ func tcid() int {
 	}
 	log.Println(a)
 	return a
+}
+
+func date() string {
+	now := time.Now()
+	y, m, d := now.Date()
+	date := (fmt.Sprint(d) + "/" + fmt.Sprint(int(m)) + "/" + fmt.Sprint(y))
+	return date
 }
 
 func fillps() {
@@ -117,6 +124,7 @@ func fillsql() {
 	input = bytes.Replace(input, []byte(`'an'`), []byte(`'`+ui.First+ui.Last[0:2]+`'`), -1)
 	input = bytes.Replace(input, []byte(`'en`), []byte(`'`+ui.First+"."+ui.Last), -1)
 	input = bytes.Replace(input, []byte(`'tcid'`), []byte(`'`+strconv.Itoa(ui.TCID)+`'`), -1)
+	input = bytes.Replace(input, []byte(`'start'`), []byte(`'`+ui.DATE+`'`), -1)
 	if err = ioutil.WriteFile(ui.First+ui.Last+".sql", input, 0666); err != nil {
 		fmt.Println(err)
 		os.Exit(1)

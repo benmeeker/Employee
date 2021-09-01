@@ -15,8 +15,8 @@ func main() {
 	}
 	if a == "add" {
 		log.Println("Initiating birthing protocol")
-		fillps()
 		tcid()
+		fillps()
 		fillsql()
 		everadd()
 		adduser()
@@ -38,6 +38,7 @@ func main() {
 	if a == "terminate" {
 		log.Println("Commencing self destruct")
 		termuser()
+		cleanup()
 	} else {
 		log.Println("Sorry I don't understand people that suck at typing")
 	}
