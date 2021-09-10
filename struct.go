@@ -1,12 +1,17 @@
 package main
 
 type info struct {
-	First string
-	Last  string
-	POU   string
-	SOU   string
-	TCID  int
-	DATE  string
+	First       string
+	Last        string
+	POU         string
+	SOU         string
+	TCID        int
+	TWOST       int
+	EXT         int
+	DATE        string
+	ALIAS       string
+	GROUPS      []string
+	EMAILGROUPS []string
 }
 
 var ui = info{
@@ -14,6 +19,11 @@ var ui = info{
 	ln(),
 	pou(),
 	sou(),
-	0,
+	mantcid(),
+	twost(),
+	ext(),
 	date(),
+	"",
+	groups(),
+	nil,
 }
