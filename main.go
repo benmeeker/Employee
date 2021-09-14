@@ -4,18 +4,7 @@ import (
 	"fmt"
 	"log"
 	"strings"
-
-	"github.com/unidoc/unioffice/common/license"
 )
-
-// 515676efae26f59af2a0b72fdf7c8d546ac91d937c2027b19594769147558563
-
-func init() {
-	err := license.SetMeteredKey(`515676efae26f59af2a0b72fdf7c8d546ac91d937c2027b19594769147558563`)
-	if err != nil {
-		log.Println(err)
-	}
-}
 
 func main() {
 	var a string
@@ -25,12 +14,10 @@ func main() {
 		log.Println(err)
 	}
 	if a == "add" {
-		//ext()
 		log.Println("Initiating birthing protocol")
-		//tcid()
-		//everadd()
-		//everperm()
-		//adduser()
+		everadd()
+		everperm()
+		adduser()
 		log.Println("Would you like this user to have an individual email address? 'Yes' or 'No'")
 		var m string
 		_, err := fmt.Scanln(&m)
@@ -39,15 +26,16 @@ func main() {
 		}
 		sepem := strings.ToLower(m)
 		if sepem == "yes" {
-			//emailgroups()
-			//gamadd()
-			//gamgroup()
+			emailgroups()
+			gamadd()
+			gamgroup()
+			gamtwost()
 		} else if sepem == "no" {
-			//alias()
-			//gamalias()
+			alias()
+			gamalias()
 		}
-		doc()
-		log.Println("For the time being please create employee in namify.axomo.com\ngive IsNamify permission, add to axomo role manager\nand add to phone directory")
+		instructions()
+		log.Println("\n\nFor the time being please create employee in namify.axomo.com\ngive IsNamify permission, add to axomo role manager\nadd to Jive (if needed), and add to the phone directory\nDon't forget to print out the forms!\n\n")
 		cleanup()
 	}
 	if a == "terminate" {

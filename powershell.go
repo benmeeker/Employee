@@ -65,8 +65,7 @@ func gamtwost() {
 	if gts, err := exec.Command("cmd", "/c", "gam", "user", ui.First+"."+ui.Last+"@namify.com", "update", "backupcodes").CombinedOutput(); err != nil {
 		log.Println(err)
 	} else {
-
-		fmt.Printf("%s\n", gts)
+		ui.TWOST = fmt.Sprintf("%s\n", gts)
 	}
 }
 

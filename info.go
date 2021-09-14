@@ -62,42 +62,36 @@ func mantcid() int {
 	return a
 }
 
-func tcid() int {
-	var a int
-	fmt.Println("What is the employee's TimeClock ID?")
-	fmt.Println("If creating a new employee enter '0'")
-	_, err := fmt.Scanln(&a)
-	if err != nil {
-		log.Println(err)
-	}
-	if a == 0 {
-		input, err := ioutil.ReadFile(`N:\IT\users\BenjaminMe\employeeidcounter.txt`)
-		if err != nil {
-			log.Println(err)
-			os.Exit(1)
-		}
-		byteNumber := input
-		cnt, _ := strconv.Atoi(string(byteNumber))
-		cnt++
-		ui.TCID = cnt
-		a = ui.TCID
-		file := []byte(strconv.Itoa(ui.TCID))
-		if err = ioutil.WriteFile(`N:\IT\users\BenjaminMe\employeeidcounter.txt`, file, 0666); err != nil {
-			fmt.Println(err)
-			os.Exit(1)
-		} else if a != 0 {
-			ui.TCID = a
-		}
-	}
-	log.Println(a)
-	return a
-}
-
-func twost() int {
-	var a int
-	log.Println("twost here")
-	return a
-}
+//func tcid() int {
+//	var a int
+//	fmt.Println("What is the employee's TimeClock ID?")
+//	fmt.Println("If creating a new employee enter '0'")
+//	_, err := fmt.Scanln(&a)
+//	if err != nil {
+//		log.Println(err)
+//	}
+//	if a == 0 {
+//		input, err := ioutil.ReadFile(`N:\IT\users\BenjaminMe\employeeidcounter.txt`)
+//		if err != nil {
+//			log.Println(err)
+//			os.Exit(1)
+//		}
+//		byteNumber := input
+//		cnt, _ := strconv.Atoi(string(byteNumber))
+//		cnt++
+//		ui.TCID = cnt
+//		a = ui.TCID
+//		file := []byte(strconv.Itoa(ui.TCID))
+//		if err = ioutil.WriteFile(`N:\IT\users\BenjaminMe\employeeidcounter.txt`, file, 0666); err != nil {
+//			fmt.Println(err)
+//			os.Exit(1)
+//		} else if a != 0 {
+//			ui.TCID = a
+//		}
+//	}
+//	log.Println(a)
+//	return a
+//}
 
 func ext() int {
 	var a string
@@ -165,7 +159,7 @@ func groups() []string {
 func emailgroups() {
 	var a string
 	var c []string
-	fmt.Println("Would you like to add this user to any email groups other than 'Everyone'?")
+	fmt.Println("Would you like to add this user to any email groups other than 'Everyone'?\nIf you plan to terminate this employee please enter 'No'")
 	fmt.Println("Please enter 'Yes' or 'No'")
 	_, err := fmt.Scanln(&a)
 	if err != nil {
@@ -228,7 +222,7 @@ func fillsql() {
 	input = bytes.Replace(input, []byte(`'an'`), []byte(`'`+ui.First+ui.Last[0:2]+`'`), -1)
 	input = bytes.Replace(input, []byte(`'en`), []byte(`'`+ui.First+"."+ui.Last), -1)
 	input = bytes.Replace(input, []byte(`'tcid'`), []byte(`'`+strconv.Itoa(ui.TCID)+`'`), -1)
-	input = bytes.Replace(input, []byte(`'start'`), []byte(`'`+ui.DATE+`'`), -1)
+	//input = bytes.Replace(input, []byte(`'start'`), []byte(`'`+ui.DATE+`'`), -1)
 	if err = ioutil.WriteFile(ui.First+ui.Last+".sql", input, 0666); err != nil {
 		fmt.Println(err)
 		os.Exit(1)

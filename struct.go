@@ -6,7 +6,7 @@ type info struct {
 	POU         string
 	SOU         string
 	TCID        int
-	TWOST       int
+	TWOST       string
 	EXT         int
 	DATE        string
 	ALIAS       string
@@ -20,7 +20,7 @@ var ui = info{
 	pou(),
 	sou(),
 	mantcid(),
-	twost(),
+	"",
 	ext(),
 	date(),
 	"",
