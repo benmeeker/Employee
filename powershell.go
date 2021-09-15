@@ -97,7 +97,7 @@ func gamterm() {
 }
 
 func termuser() {
-	if tu, err := exec.Command("powershell", "Invoke-Command", "-ComputerName", "boba", "-Credential", "BenjaminMe", "-ScriptBlock", "{Remove-ADUser -Identity "+ui.First+ui.Last[0:2]+" -Confirm:$false}").CombinedOutput(); err != nil {
+	if tu, err := exec.Command("powershell", "Invoke-Command", "-ComputerName", "boba", "-Credential", ui.WHO, "-ScriptBlock", "{Remove-ADUser -Identity "+ui.First+ui.Last[0:2]+" -Confirm:$false}").CombinedOutput(); err != nil {
 		log.Println(err)
 	} else {
 		fmt.Printf("%s\n", tu)
@@ -133,4 +133,15 @@ func everterm() {
 	} else {
 		fmt.Printf("%s\n", et)
 	}
+}
+
+func whoami() string {
+	var who string
+	if wai, err := exec.Command("cmd", "/c", "gam", "whoami").CombinedOutput(); err != nil {
+		log.Println(err)
+	} else {
+		output := fmt.Sprintf("%s\n", wai)
+		who = strings.Trim(output, `namify\`)
+	}
+	return who
 }

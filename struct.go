@@ -10,6 +10,7 @@ type info struct {
 	EXT         int
 	DATE        string
 	ALIAS       string
+	WHO         string
 	GROUPS      []string
 	EMAILGROUPS []string
 }
@@ -24,6 +25,7 @@ var ui = info{
 	ext(),
 	date(),
 	"",
+	whoami(),
 	groups(),
 	nil,
 }

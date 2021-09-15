@@ -35,7 +35,7 @@ func main() {
 			gamalias()
 		}
 		instructions()
-		log.Println("\n\nFor the time being please create employee in namify.axomo.com\ngive IsNamify permission, add to axomo role manager\nadd to Jive (if needed), and add to the phone directory\nDon't forget to print out the forms!\n\n")
+		log.Println("\n\nFor the time being please create employee in namify.axomo.com\ngive IsNamify permission, add to axomo role manager\nadd to Jive (if needed), and add to the phone directory\nDon't forget to print out the forms!")
 		cleanup()
 	}
 	if a == "terminate" {

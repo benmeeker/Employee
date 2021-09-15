@@ -26,7 +26,7 @@ func instructions() {
 		log.Println(err)
 	}
 	var og *os.File
-	new, err := os.Create(`C:\users\BenjaminMe\Desktop\Instructions.docx`)
+	new, err := os.Create(`Instructions.docx`)
 	if err != nil {
 		log.Println(err)
 	}
@@ -53,7 +53,7 @@ func instructions() {
 
 func login(a, b, c string) {
 	var content []string
-	file, err := os.Create(`C:\users\BenjaminMe\Desktop\Logins.txt`)
+	file, err := os.Create(`Logins.txt`)
 	if err != nil {
 		log.Println(err)
 	}
