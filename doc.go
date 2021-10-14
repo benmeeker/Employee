@@ -10,7 +10,7 @@ import (
 
 func instructions() {
 	var a, b, c string
-	log.Println("Does this user need instructions for everest use?\nPlease enter 'Yes' or 'No'")
+	log.Println("Does this user need instructions for 'program1' use?\nPlease enter 'Yes' or 'No'")
 	_, e := fmt.Scanln(&a)
 	if e != nil {
 		log.Println(e)
@@ -31,21 +31,21 @@ func instructions() {
 		log.Println(err)
 	}
 	if strings.ToLower(a) == "yes" && strings.ToLower(b) == "yes" && strings.ToLower(c) == "no" {
-		og, _ = os.Open(`N:\IT\users\BenjaminMe\noemail.docx`)
+		og, _ = os.Open(`reference docx`)
 	} else if strings.ToLower(a) == "yes" && strings.ToLower(b) == "no" && strings.ToLower(c) == "yes" {
-		og, _ = os.Open(`N:\IT\users\BenjaminMe\nophone.docx`)
+		og, _ = os.Open(`reference docx`)
 	} else if strings.ToLower(a) == "no" && strings.ToLower(b) == "yes" && strings.ToLower(c) == "yes" {
-		og, _ = os.Open(`N:\IT\users\BenjaminMe\noeverest.docx`)
+		og, _ = os.Open(`reference docx`)
 	} else if strings.ToLower(a) == "yes" && strings.ToLower(b) == "no" && strings.ToLower(c) == "no" {
-		og, _ = os.Open(`N:\IT\users\BenjaminMe\noemailphone.docx`)
+		og, _ = os.Open(`reference docx`)
 	} else if strings.ToLower(a) == "no" && strings.ToLower(b) == "no" && strings.ToLower(c) == "yes" {
-		og, _ = os.Open(`N:\IT\users\BenjaminMe\noeverestphone.docx`)
+		og, _ = os.Open(`reference docx`)
 	} else if strings.ToLower(a) == "no" && strings.ToLower(b) == "yes" && strings.ToLower(c) == "no" {
-		og, _ = os.Open(`N:\IT\users\BenjaminMe\noeverestemail.docx`)
+		og, _ = os.Open(`reference docx`)
 	} else if strings.ToLower(a) == "no" && strings.ToLower(b) == "no" && strings.ToLower(c) == "no" {
-		og, _ = os.Open(`N:\IT\users\BenjaminMe\nophoneemaileverest.docx`)
+		og, _ = os.Open(`reference docx`)
 	} else {
-		og, _ = os.Open(`N:\IT\users\BenjaminMe\fulldoc.docx`)
+		og, _ = os.Open(`reference docx`)
 	}
 	io.Copy(new, og)
 	login(a, b, c)
@@ -58,11 +58,11 @@ func login(a, b, c string) {
 		log.Println(err)
 	}
 	defer file.Close()
-	windows := "Windows Username: " + ui.First + ui.Last[0:2] + "\nWindows Password: Namify4321\n"
-	gmail := "Gmail: " + ui.First + "." + ui.Last + "\nGmail Password: " + ui.First + ui.Last + "4321\n" + ui.TWOST + "\n"
+	windows := "Windows Username: Windows Username Here\nWindows Password: Windows Password Here"
+	gmail := "Gmail: Gmail Username Here\nGmail Password: Gmail Password Here"
 	tcid := "TCID: " + fmt.Sprint(ui.TCID) + "\n"
-	everest := "Everest Username: " + ui.First + ui.Last[0:2] + "\nEverest Password: abcd4321!\n"
-	phone := "Phone #: 801-704-3" + fmt.Sprint(ui.EXT) + "\nExtension: " + fmt.Sprint(ui.EXT) + "\n"
+	everest := "Username: Username Here" "\nPassword: Password Here\n"
+	phone := "Phone #: (Number Base Here)" + fmt.Sprint(ui.EXT) + "\nExtension: " + fmt.Sprint(ui.EXT) + "\n"
 	if strings.ToLower(a) == "yes" && strings.ToLower(b) == "yes" && strings.ToLower(c) == "no" {
 		content = []string{windows, tcid, everest, phone}
 	} else if strings.ToLower(a) == "yes" && strings.ToLower(b) == "no" && strings.ToLower(c) == "yes" {
