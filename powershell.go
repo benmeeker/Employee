@@ -10,7 +10,7 @@ import (
 
 func adduser() {
 	fillps()
-	if au, err := exec.Command("powershell", "Invoke-Command", "-ComputerName", "boba", "-Credential", "BenjaminMe", "-FilePath", ui.First+ui.Last+".ps1").CombinedOutput(); err != nil {
+	if au, err := exec.Command("powershell", "Invoke-Command", "-ComputerName", "Computer Name Here", "-Credential", "Credentials Here", "-FilePath", ".ps1").CombinedOutput(); err != nil {
 		fmt.Println(err)
 	} else {
 		fmt.Printf("%s\n", au)
@@ -20,7 +20,7 @@ func adduser() {
 }
 
 func enableuser() {
-	if eu, err := exec.Command("powershell", "Invoke-Command", "-ComputerName", "boba", "-ScriptBlock", "{Enable-ADAccount -Identity "+ui.First+ui.Last[0:2]+"}").CombinedOutput(); err != nil {
+	if eu, err := exec.Command("powershell", "Invoke-Command", "-ComputerName", "Computer Name Here", "-ScriptBlock", "{Enable-ADAccount -Identity AD Username Here}").CombinedOutput(); err != nil {
 		log.Println(err)
 	} else {
 		fmt.Printf("%s\n", eu)
@@ -28,7 +28,7 @@ func enableuser() {
 }
 
 func changepass() {
-	if cp, err := exec.Command("powershell", "Invoke-Command", "-ComputerName", "boba", "-ScriptBlock", "{Set-ADUser -Identity "+ui.First+ui.Last[0:2]+" -ChangePasswordAtLogon $true}").CombinedOutput(); err != nil {
+	if cp, err := exec.Command("powershell", "Invoke-Command", "-ComputerName", "Computer Name Here", "-ScriptBlock", "{Set-ADUser -Identity AD Username Here" -ChangePasswordAtLogon $true}").CombinedOutput(); err != nil {
 		log.Println(err)
 	} else {
 		fmt.Printf("%s\n", cp)
@@ -45,7 +45,7 @@ func gamadd() {
 
 func gamgroup() {
 	for _, inf := range ui.EMAILGROUPS {
-		if gg, err := exec.Command("cmd", "/c", "gam", "update", "group", fmt.Sprint(inf)+"@namify.com", "add", "member", ui.First+"."+ui.Last+"@namify.com").CombinedOutput(); err != nil {
+		if gg, err := exec.Command("cmd", "/c", "gam", "update", "group", "email groups here", "add", "member", "User email here").CombinedOutput(); err != nil {
 			log.Println(err)
 		} else {
 			fmt.Printf("%s\n", gg)
@@ -54,7 +54,7 @@ func gamgroup() {
 }
 
 func gamalias() {
-	if gg, err := exec.Command("cmd", "/c", "gam", "create", "alias", ui.First+"."+ui.Last+"@namify.com", "user", ui.ALIAS).CombinedOutput(); err != nil {
+	if gg, err := exec.Command("cmd", "/c", "gam", "create", "alias", "User email here", "user", "Alias here").CombinedOutput(); err != nil {
 		log.Println(err)
 	} else {
 		fmt.Printf("%s\n", gg)
@@ -62,7 +62,7 @@ func gamalias() {
 }
 
 func gamtwost() {
-	if gts, err := exec.Command("cmd", "/c", "gam", "user", ui.First+"."+ui.Last+"@namify.com", "update", "backupcodes").CombinedOutput(); err != nil {
+	if gts, err := exec.Command("cmd", "/c", "gam", "user", "User email here", "update", "backupcodes").CombinedOutput(); err != nil {
 		log.Println(err)
 	} else {
 		ui.TWOST = fmt.Sprintf("%s\n", gts)
@@ -77,18 +77,18 @@ func gamterm() {
 		log.Println(err)
 	}
 	if strings.ToLower(a) == "yes" {
-		if gt, err := exec.Command("cmd", "/c", "gam", "update", "user", ui.First+"."+ui.Last+"@namify.com", "email", "x"+ui.First+"."+ui.Last+"@namify.com").CombinedOutput(); err != nil {
+		if gt, err := exec.Command("cmd", "/c", "gam", "update", "user", "User email here", "email", "Terminated user email here").CombinedOutput(); err != nil {
 			log.Println(err)
 		} else {
 			fmt.Printf("%s\n", gt)
 		}
-		if gt, err := exec.Command("cmd", "/c", "gam", "delete", "alias", ui.First+"."+ui.Last+"@namify.com", "user", "x"+ui.First+"."+ui.Last+"@namify.com").CombinedOutput(); err != nil {
+		if gt, err := exec.Command("cmd", "/c", "gam", "delete", "alias", "User email here", "user", "Terminated user email here").CombinedOutput(); err != nil {
 			log.Println(err)
 		} else {
 			fmt.Printf("%s\n", gt)
 		}
 	} else if strings.ToLower(a) == "no" {
-		if gt, err := exec.Command("cmd", "/c", "gam", "delete", "alias", ui.First+"."+ui.Last+"@namify.com").CombinedOutput(); err != nil {
+		if gt, err := exec.Command("cmd", "/c", "gam", "delete", "alias", "User email here").CombinedOutput(); err != nil {
 			log.Println(err)
 		} else {
 			fmt.Printf("%s\n", gt)
@@ -97,7 +97,7 @@ func gamterm() {
 }
 
 func termuser() {
-	if tu, err := exec.Command("powershell", "Invoke-Command", "-ComputerName", "boba", "-Credential", ui.WHO, "-ScriptBlock", "{Remove-ADUser -Identity "+ui.First+ui.Last[0:2]+" -Confirm:$false}").CombinedOutput(); err != nil {
+	if tu, err := exec.Command("powershell", "Invoke-Command", "-ComputerName", "Computer Name Here", "-Credential", ui.WHO, "-ScriptBlock", "{Remove-ADUser -Identity AD Username Here -Confirm:$false}").CombinedOutput(); err != nil {
 		log.Println(err)
 	} else {
 		fmt.Printf("%s\n", tu)
@@ -108,7 +108,7 @@ func termuser() {
 
 func everadd() {
 	fillsql()
-	if ea, err := exec.Command("powershell", "Invoke-SqlCmd", "-ServerInstance", `BB8\SQL`, "-InputFile", ui.First+ui.Last+`.sql`).CombinedOutput(); err != nil {
+	if ea, err := exec.Command("powershell", "Invoke-SqlCmd", "-ServerInstance", `Server Here`, "-InputFile", `.sql`).CombinedOutput(); err != nil {
 		log.Println(err)
 	} else {
 		fmt.Printf("%s\n", ea)
@@ -117,18 +117,18 @@ func everadd() {
 
 func everperm() {
 	for _, inf := range ui.GROUPS {
-		if ep, err := exec.Command("powershell", "Invoke-SqlCmd", "-ServerInstance", `BB8\SQL`, "-InputFile", addperm(fmt.Sprint(inf))).CombinedOutput(); err != nil {
+		if ep, err := exec.Command("powershell", "Invoke-SqlCmd", "-ServerInstance", `Server Here`, "-InputFile", addperm(fmt.Sprint(inf))).CombinedOutput(); err != nil {
 			log.Println(err)
 		} else {
 			fmt.Printf("%s\n", ep)
 		}
-		os.Remove(ui.First + ui.Last + "perms.sql")
+		os.Remove("perms.sql")
 	}
 }
 
 func everterm() {
 	fillsql()
-	if et, err := exec.Command("powershell", "Invoke-SqlCmd", "-ServerInstance", `BB8\SQL`, "-Database", "EVEREST_TNS", "-Query", `"update dbo.PERSONAL set ACTIVE='F' where IDNO='`+ui.First+ui.Last[0:2]+`'"`).CombinedOutput(); err != nil {
+	if et, err := exec.Command("powershell", "Invoke-SqlCmd", "-ServerInstance", `Server Here`, "-Database", "EDatabase Here", "-Query", `"update dbo."database here" set ACTIVE='F' where IDNO='ID Number Here'"`).CombinedOutput(); err != nil {
 		log.Println(err)
 	} else {
 		fmt.Printf("%s\n", et)
