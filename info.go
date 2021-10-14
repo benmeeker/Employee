@@ -71,7 +71,7 @@ func mantcid() int {
 //		log.Println(err)
 //	}
 //	if a == 0 {
-//		input, err := ioutil.ReadFile(`N:\IT\users\BenjaminMe\employeeidcounter.txt`)
+//		input, err := ioutil.ReadFile(`idcounter.txt`)
 //		if err != nil {
 //			log.Println(err)
 //			os.Exit(1)
@@ -82,7 +82,7 @@ func mantcid() int {
 //		ui.TCID = cnt
 //		a = ui.TCID
 //		file := []byte(strconv.Itoa(ui.TCID))
-//		if err = ioutil.WriteFile(`N:\IT\users\BenjaminMe\employeeidcounter.txt`, file, 0666); err != nil {
+//		if err = ioutil.WriteFile(`idcounter.txt`, file, 0666); err != nil {
 //			fmt.Println(err)
 //			os.Exit(1)
 //		} else if a != 0 {
@@ -117,7 +117,6 @@ func date() string {
 func alias() {
 	var a string
 	fmt.Println("Please enter the email you would like this user to be an alias of")
-	fmt.Println("E.X. 'it@namify.com'")
 	_, err := fmt.Scanln(&a)
 	if err != nil {
 		log.Println(err)
@@ -136,7 +135,7 @@ func groups() []string {
 	}
 	if strings.ToLower(a) == "yes" {
 		var b string
-		fmt.Println("Here is a list of groups:\n401SEC\n402SEC\n600SEC\nACCMANAGER\nAccounting\nADMIN\nADMINTEAM\nAMAZONPAYMENTS\nARA\nBOB\nBRANCHMANAGER\nFACILITIES\nFINANCE\nFITNESS\nGRAPHICS\nHR\nIMPROVEMENT\nIT\nLINELEAD\nMARKETING\nMARKETINGADMIN\nMARKETINGMANAGER\nMASSAGE\nNAMETAGS\nNTMANAGER\nOUTBOUND\nPAYROLLADMIN\nPAYROLLVIEW\nPIECEWORK\nPODLEADER\nPRODUCTION\nPROMOS\nPURCHASING\nSALESLEADER\nSALESMANAGER\nSecretary\nSEO\nSHIP\nSUP\nTESTGROUP\nTEXTILES\nVPOFSALES\nWEBORDERS\nWELTONWOODS")
+		fmt.Println("List Groups Here if Applicable")
 		fmt.Println("Please enter the groups you want to add\nline by line in a case sensitive format\ntype 'done' when finished")
 		for {
 			_, err := fmt.Scanln(&b)
@@ -167,8 +166,8 @@ func emailgroups() {
 	}
 	if strings.ToLower(a) == "yes" {
 		var b string
-		fmt.Println("Here is a list of email groups that end with @namify.com:\n2stepdisabled\naccounting\nap\ngraphicscc1\namazoncontact\nara\naxomo.engine\naxomo-forum\nbeoldusers\nbeoldusers2\nbranchmanager\nbranches\ncareers\ncellphones\ncharity.committee\nclassroom_teachers\ncontact\nculture-committee\ncustomerservice\ndenver\ndenverchat\ndesign\ndigitalheattransfer.report\ndtg.report\nebay\nembprocessing.report\nembroidery.report\nenterprise\nfeedback\nfinance\nfinanceoldusers\ngraphicsoldusers\nheattransfer\nheattransfer.report\nhubspot-pro-sales-execs\nhr\nimprovement.committee\nit\nitoldusers\nit.training\niviebids\nlanyardsprovider\nlaser.report\nleadgen\nleads\nmarketing\nmarketingoldusers\nmarketing.purchasing\nmarketing.social\nalibaba\nhelp\neveryone\nnamifychat\nnamifyftp\nnewsletter\noperations\norders\npaypal\npaypalpurchasing\npedidos\nphotos\npicking.report\nprinting.report\nproduction\npurchasingoldusers\nquotes\nreceiving.report\nsales\nsalesexecutives\nsalesleaders\nsave.my.job\nseoldusers\nseopaypal\nshipping.report\nspringville\nspringvillechat\nsuppliers\nsurvey.responder\nsysadmin\ntechnology.committee\nvp\nweb-developer\nwebadmin\nrent\nworkfront")
-		fmt.Println("Please enter the email groups you want to add NOT including\n@namify.com type 'done' when finished")
+		fmt.Println("List Email Groups Here")
+		fmt.Println("Please enter the email groups you want to add type 'done' when finished")
 		for {
 			_, err := fmt.Scanln(&b)
 			if err != nil {
@@ -188,7 +187,7 @@ func emailgroups() {
 }
 
 func fillps() {
-	input, err := ioutil.ReadFile(`N:\IT\users\BenjaminMe\adduserscript.ps1`)
+	input, err := ioutil.ReadFile(`adduserscript.ps1`)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -211,7 +210,7 @@ func fillps() {
 }
 
 func fillsql() {
-	input, err := ioutil.ReadFile(`N:\IT\users\BenjaminMe\addeverest.sql`)
+	input, err := ioutil.ReadFile(`addeverest.sql`)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -230,7 +229,7 @@ func fillsql() {
 }
 
 func addperm(inf string) string {
-	input, err := ioutil.ReadFile(`N:\IT\users\BenjaminMe\addeverestperms.sql`)
+	input, err := ioutil.ReadFile(`addeverestperms.sql`)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
